@@ -13,17 +13,6 @@ public class GeoLocationServiceImpl implements GeoLocationService {
     @Autowired
     private GeoLocationRepository repository;
 
-//    @Override
-//    public GeoLocation create(GeoLocation geoLocation) {
-//        repository.addGeoLocation(geoLocation);
-//        return geoLocation;
-//    }
-//
-//    @Override
-//    public List<GeoLocation> findAll() {
-//        return repository.getGeoLocations();
-//    }
-
     @Override
     public GeoLocation create(GeoLocation geoLocation) {
         repository.save(geoLocation);
