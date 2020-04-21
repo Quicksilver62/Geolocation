@@ -1,0 +1,14 @@
+version: "0.0.1"
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: "mongodb"
+    ports:
+    - 27017:27017
+  geolocation:
+    image: packt/geolocation:latest
+    container_name: geolocation
+    ports:
+    - 8181:8181
+    links:
+      - mongodb
