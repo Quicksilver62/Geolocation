@@ -8,8 +8,8 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface GeoLocationRepository extends MongoRepository<GeoLocation, Double> {
+public interface GeoLocationRepository extends MongoRepository<GeoLocation, String> {
 
-    List<GeoLocation> findByUserId(UUID userId);
+    public List<GeoLocation> findByUserId(final UUID userId);
 
 }
