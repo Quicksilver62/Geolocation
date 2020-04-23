@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface GeoLocationRepository extends MongoRepository<GeoLocation, String> {
 
-    public List<GeoLocation> findByUserId(final UUID userId);
+    public List<GeoLocation> findByUserId(UUID userId);
 
 }

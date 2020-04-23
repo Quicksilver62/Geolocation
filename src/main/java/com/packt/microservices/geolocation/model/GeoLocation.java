@@ -4,10 +4,11 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
-import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
-@Document
+@Document(collection = "geolocation")
 public class GeoLocation implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -15,24 +16,18 @@ public class GeoLocation implements Serializable {
     @Id
     private String id;
     private UUID userId;
-    private double latitude;
-    private double longitude;
-    private long timestamp;
+    private List<Track> trackList;
 
     public GeoLocation() {
-        this.timestamp = Instant.now().toEpochMilli();
+        this.trackList = new ArrayList<>();
+    }
+
+    public GeoLocation(List<Track> trackList) {
+        this.trackList = trackList;
     }
 
     public void setUserId(UUID userId) {
         this.userId = userId;
-    }
-
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
-
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
     }
 
     public String getId() {
@@ -43,17 +38,10 @@ public class GeoLocation implements Serializable {
         return userId;
     }
 
-    public double getLatitude() {
-        return latitude;
+    public List<Track> getTrackList() {
+        return trackList;
     }
 
-    public double getLongitude() {
-        return longitude;
-    }
-
-    public long getTimestamp() {
-        return timestamp;
-    }
 }
 
 

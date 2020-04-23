@@ -22,13 +22,15 @@ public class GeoLocationController {
     @RequestMapping(method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
     public GeoLocation create(@Valid @RequestBody DTOGeolocation dtoGeolocation) {
         return service.create(dtoGeolocation);
-
     }
 
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
     public List<GeoLocation> findAll() {
         return service.findAll();
     }
+
+    @RequestMapping(value = "/{userId}", method = RequestMethod.GET, produces = "application/json")
+    public List<GeoLocation> findById(@PathVariable("userId") UUID userId) {return service.findByUserId(userId);}
 
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     @RequestMapping(method = RequestMethod.DELETE, produces = "application/json")

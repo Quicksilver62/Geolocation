@@ -9,13 +9,15 @@ import java.util.UUID;
 public class DTOGeolocation implements Serializable {
 
     private UUID userId;
+    private UUID trackId;
     private double latitude;
     private double longitude;
 
-    public DTOGeolocation(UUID userId, double latitude, double longitude) {
+    public DTOGeolocation(final UUID userId, final double latitude, final double longitude, final UUID trackId) {
         this.userId = userId;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.trackId = trackId;
     }
 
     public UUID getUserId() {
@@ -29,4 +31,6 @@ public class DTOGeolocation implements Serializable {
     public double getLongitude() {
         return longitude;
     }
+
+    public UUID getTrackId() { return trackId; }
 }
