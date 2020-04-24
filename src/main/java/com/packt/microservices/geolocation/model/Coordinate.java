@@ -8,18 +8,18 @@ import java.util.UUID;
 public class Coordinate {
 
     @Id
-    private UUID coordId;
+    private UUID coordinateId;
     private double latitude;
     private double longitude;
     private long timestamp;
 
     public Coordinate() {
-        this.coordId = UUID.randomUUID();
+        this.coordinateId = UUID.randomUUID();
         this.timestamp = Instant.now().toEpochMilli();
     }
 
     public UUID getCoordId() {
-        return coordId;
+        return coordinateId;
     }
 
     public double getLatitude() {
@@ -42,4 +42,13 @@ public class Coordinate {
         return timestamp;
     }
 
+    @Override
+    public String toString() {
+        return "Coordinate{" +
+                "coordId=" + coordinateId +
+                ", latitude=" + latitude +
+                ", longitude=" + longitude +
+                ", timestamp=" + timestamp +
+                '}';
+    }
 }
