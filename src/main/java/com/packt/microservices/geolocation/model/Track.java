@@ -29,12 +29,4 @@ public class Track {
     public List<Coordinate> getCoordinates() {
         return coordinates;
     }
-
-    @Override
-    public String toString() {
-        return "Track{" +
-                "trackId=" + trackId +
-                '}';
-    }
-
 }

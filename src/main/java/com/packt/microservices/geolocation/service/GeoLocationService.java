@@ -1,6 +1,6 @@
 package com.packt.microservices.geolocation.service;
 
-import com.packt.microservices.geolocation.model.DTOGeolocation;
+import com.packt.microservices.geolocation.dto.DTOGeolocation;
 import com.packt.microservices.geolocation.model.GeoLocation;
 import com.packt.microservices.geolocation.model.Track;
 

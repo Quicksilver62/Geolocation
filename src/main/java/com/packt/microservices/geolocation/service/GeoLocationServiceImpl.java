@@ -1,7 +1,7 @@
 package com.packt.microservices.geolocation.service;
 
 import com.packt.microservices.geolocation.model.Coordinate;
-import com.packt.microservices.geolocation.model.DTOGeolocation;
+import com.packt.microservices.geolocation.dto.DTOGeolocation;
 import com.packt.microservices.geolocation.model.Track;
 import com.packt.microservices.geolocation.repository.GeoLocationRepository;
 import com.packt.microservices.geolocation.model.GeoLocation;
@@ -49,13 +49,6 @@ public class GeoLocationServiceImpl implements GeoLocationService {
 
     }
 
-    private GeoLocation setNewTrack(final GeoLocation geoLocation, final Coordinate coordinate) {
-        Track track = new Track(Arrays.asList(coordinate));
-        geoLocation.getTrackList().add(track);
-        return geoLocation;
-    }
-
-
     @Override
     public List<GeoLocation> findAll() {
         return repository.findAll();
@@ -71,7 +64,7 @@ public class GeoLocationServiceImpl implements GeoLocationService {
         repository.deleteAll();
     }
 
-    private Coordinate mapper(final DTOGeolocation dtoGeolocation) {
+    private static Coordinate mapper(final DTOGeolocation dtoGeolocation) {
         Coordinate coordinate = new Coordinate();
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.map(dtoGeolocation, coordinate);
