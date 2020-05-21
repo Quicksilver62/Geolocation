@@ -6,6 +6,7 @@ Communication is done over HTTP. Both request and response are formatted as JSON
 
 ## Run
 mvn clean install
+
 java -jar ./target/geolocation-0.0.1-SNAPSHOT.jar
 
 ## Geolocation requests
