@@ -1,14 +1,16 @@
 package com.packt.microservices.geolocation.service;
 
-import com.packt.microservices.geolocation.model.DTOGeolocation;
+import com.packt.microservices.geolocation.model.Coordinate;
+import com.packt.microservices.geolocation.dto.DTOGeolocation;
+import com.packt.microservices.geolocation.model.Track;
 import com.packt.microservices.geolocation.repository.GeoLocationRepository;
 import com.packt.microservices.geolocation.model.GeoLocation;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class GeoLocationServiceImpl implements GeoLocationService {
@@ -17,16 +19,34 @@ public class GeoLocationServiceImpl implements GeoLocationService {
     private GeoLocationRepository repository;
 
     @Override
-    public GeoLocation create(DTOGeolocation dtoGeolocation) {
+    public GeoLocation create(final DTOGeolocation dtoGeolocation) {
 
-        GeoLocation geoLocation = new GeoLocation();
-
-        ModelMapper modelMapper = new ModelMapper();
-        modelMapper.map(dtoGeolocation, geoLocation);
-
+        Coordinate coordinate = mapper(dtoGeolocation);
+        GeoLocation geoLocation = new GeoLocation(Arrays.asList(new Track(Arrays.asList(coordinate))));
         repository.save(geoLocation);
-
         return geoLocation;
+
+    }
+
+    @Override
+    public GeoLocation update(final DTOGeolocation dtoGeolocation, final GeoLocation geoLocation) {
+
+        Coordinate coordinate = mapper(dtoGeolocation);
+        Track track = new Track(Arrays.asList(coordinate));
+        geoLocation.getTrackList().add(track);
+        repository.save(geoLocation);
+        return geoLocation;
+
+    }
+
+    @Override
+    public GeoLocation update(final DTOGeolocation dtoGeolocation, final GeoLocation geoLocation, final Track track) {
+
+        Coordinate coordinate = mapper(dtoGeolocation);
+        track.getCoordinates().add(coordinate);
+        repository.save(geoLocation);
+        return geoLocation;
+
     }
 
     @Override
@@ -35,8 +55,20 @@ public class GeoLocationServiceImpl implements GeoLocationService {
     }
 
     @Override
+    public GeoLocation findByUserId(String userId) {
+        return repository.findByUserId(userId);
+    }
+
+    @Override
     public void deleteAll() {
         repository.deleteAll();
+    }
+
+    private static Coordinate mapper(final DTOGeolocation dtoGeolocation) {
+        Coordinate coordinate = new Coordinate();
+        ModelMapper modelMapper = new ModelMapper();
+        modelMapper.map(dtoGeolocation, coordinate);
+        return coordinate;
     }
 
 }
