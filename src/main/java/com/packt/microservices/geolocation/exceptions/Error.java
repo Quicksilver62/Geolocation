@@ -1,7 +1,5 @@
 package com.packt.microservices.geolocation.exceptions;
 
-import org.springframework.http.HttpStatus;
-
 public enum Error {
     BAD_REQUEST("BAD_REQUEST", "Bad request", "Не заполнены обязательные поля или отсутствует файл"),
     INTERNAL_ERROR("INTERNAL_ERROR", "Internal error", "Внутренняя ошибка"),
