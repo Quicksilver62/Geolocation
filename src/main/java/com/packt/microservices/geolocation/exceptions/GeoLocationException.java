@@ -1,20 +1,17 @@
 package com.packt.microservices.geolocation.exceptions;
 
-import org.springframework.http.HttpStatus;
-
 public class GeoLocationException extends Exception {
 
-    private final HttpStatus status;
+    private final String description;
 
     public GeoLocationException(Error error) {
 
         super(error.getCode());
-        this.status = error.getStatus();
+        this.description = error.getDescription();
 
     }
 
-    public HttpStatus getStatus() {
-        return status;
+    public String getDescription() {
+        return description;
     }
-
 }

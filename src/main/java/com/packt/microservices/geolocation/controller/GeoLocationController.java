@@ -24,6 +24,7 @@ public class GeoLocationController {
     private GeoLocationService service;
 
     @ResponseStatus(code = HttpStatus.CREATED)
+    @ResponseBody
     @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public GeoLocation create(@Validated @RequestBody DTOGeolocation dtoGeolocation) throws GeoLocationException {
 

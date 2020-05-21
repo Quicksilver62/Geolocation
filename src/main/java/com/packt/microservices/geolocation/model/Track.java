@@ -2,11 +2,12 @@ package com.packt.microservices.geolocation.model;
 
 import org.springframework.data.annotation.Id;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class Track {
+public class Track implements Serializable {
 
     @Id
     private UUID trackId;
@@ -29,4 +30,5 @@ public class Track {
     public List<Coordinate> getCoordinates() {
         return coordinates;
     }
+
 }

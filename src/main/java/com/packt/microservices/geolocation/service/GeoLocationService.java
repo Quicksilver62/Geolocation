@@ -8,11 +8,11 @@ import java.util.List;
 
 public interface GeoLocationService {
 
-    public GeoLocation create (DTOGeolocation dtoGeolocation);
-    public GeoLocation update (DTOGeolocation dtoGeolocation, GeoLocation geoLocation);
-    public GeoLocation update (DTOGeolocation dtoGeolocation, GeoLocation geoLocation, Track track);
-    public List<GeoLocation> findAll();
-    public GeoLocation findByUserId(String userId);
-    public void deleteAll();
+    GeoLocation create (DTOGeolocation dtoGeolocation);
+    GeoLocation update (DTOGeolocation dtoGeolocation, GeoLocation geoLocation);
+    GeoLocation update (DTOGeolocation dtoGeolocation, GeoLocation geoLocation, Track track);
+    List<GeoLocation> findAll();
+    GeoLocation findByUserId(String userId);
+    void deleteAll();
 
 }

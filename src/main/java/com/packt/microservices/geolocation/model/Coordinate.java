@@ -2,10 +2,11 @@ package com.packt.microservices.geolocation.model;
 
 import org.springframework.data.annotation.Id;
 
+import java.io.Serializable;
 import java.time.Instant;
 import java.util.UUID;
 
-public class Coordinate {
+public class Coordinate implements Serializable {
 
     @Id
     private UUID coordId;
